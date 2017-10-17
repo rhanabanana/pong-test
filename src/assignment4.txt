@@ -1,0 +1,80 @@
+*** Assignment 4, Pong ***
+
+We're going to do a version of the Pong computer game
+https://en.wikipedia.org/wiki/Pong
+
+Game controls are
+- Left paddle Q (up), A (down)
+- Right paddle  Up arrow (up), Down arrow (down)
+
+Players will get one point for each hit with paddle/ball. Ball will increase speed
+with a 5% at each hit.
+
+If ball disappears from screen, a new ball, with a random speed and random (sensible) direction
+shows up at center of screen (forever ... or until menu File > Stop or Exit)
+
+To run the program, run the PongGUI file (possible not work right now ...).
+
+Directory layout
+----------------
+The application is divided over a few directories (to put related classes etc. in same location)
+
+    - pong/img: Images files for the view
+    - pong/model: The object model classes (the game logic)
+    - pong/service: Services supporting the model
+    - pong/test: Tests for the model
+    - pong/view: The view of the model, and the event handling
+
+
+Object model
+------------
+- The overall game is represented by the Pong class.
+- Pong class uses two Paddle objects and an Ball object from classes Paddle and Ball.
+- Pong class handles the over all game logic
+- Paddle handle data and methods for a single paddle, and the same with Ball
+- The model has no look, it's just data and logic.
+
+GUI
+---
+This is a graphical event driven JavaFX program. All graphics and event
+handling code is in PongGUI file.
+- The GUI has no game logic what so ever, it's just the look and the events
+
+Program is "themeable". User may choose different themes for "the look"".
+Currently there are two implemented themes, "Cool" and "Duckie"
+See cooltheme.png and duckietheme.png
+
+- GUI uses images for the view of the ball and the paddles (and the background)
+  all images are in /img directory
+- GUI uses a helper class, Theme, holding all images for a single theme.
+
+Services
+--------
+- There is one service class to read images (sprites) from the /img directory
+
+
+Workflow
+--------
+Some classes and some methods are implemented, see comments in code (= "Nothing to do here").
+
+1. First goals is to get "something" (non moving) visible.
+
+   The model is constructed in the method newGame of PongGUI.
+   The paddles are constructed but we need a ball.
+   Implement a method to create a ball.
+
+   After this it should be possible to get something on the screen when selecting File > New.
+
+2. To get things going you must implement the method update() in class Pong (the game loop).
+   This is s **huge** task. Must break down into smaller method. Also must decide in which
+   class to place the methods. Make a sketch as usual but also note the class the method belongs to.
+   Implement methods to move the paddles, see keyPressed and keyReleased in PongGUI.
+   Start out with simplest possible "movement"
+
+   Try to test all logic method, use the Test class.
+
+   NOTE: For visual testing use "renderDebugMode", see PongGUI, renderGame method.
+
+3. (Optional) Add a theme of your own!
+
+4. (Optional) Add some twist(s) to the game!
